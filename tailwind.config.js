@@ -1,5 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  // Tailwind emits its --tw-* variable defaults as a global `*,:after,:before` rule, and
+  // this sheet ships unlayered. Unlayered CSS outranks every cascade layer, so any host
+  // whose own styles live in layers - all of Tailwind v4's output - loses every utility
+  // that reads the same variable names (shadow, ring, transform, filter, gradient).
+  // `preflight: false` does not suppress this block; this flag does, by emitting the
+  // defaults per-utility instead of globally.
+  experimental: { optimizeUniversalDefaults: true },
   darkMode: 'false',
   prefix: 'allm-',
   corePlugins: {
